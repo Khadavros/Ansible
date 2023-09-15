@@ -1,5 +1,5 @@
 - name: update apt packages
   hosts: all
   remote_user: root
-    ansible.builtin.apt:
+  ansible.builtin.apt:
       update_cache: yes
