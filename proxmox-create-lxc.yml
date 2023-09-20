@@ -1,6 +1,5 @@
 ---
 - hosts: Test
-  become: true
   tasks:
   - name: create a normal container
     community.general.proxmox:
