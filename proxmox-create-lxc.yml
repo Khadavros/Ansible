@@ -22,6 +22,12 @@
       ostemplate: "{{ proxmox_base_image }}"
       netif: '{"net0":"name=eth0,ip=dhcp,bridge=vmbr0,firewall=0,tag=10"}'
       features: "{{ proxmox_features }}"
+      
+  - name: Sleep for 30 seconds and continue with play
+    ansible.builtin.wait_for:
+      timeout: 30
+    delegate_to: localhost
+    
   - name: start a normal container
     community.general.proxmox:
       api_user: "{{ proxmox_api_user }}"
