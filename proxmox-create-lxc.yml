@@ -20,7 +20,6 @@
       swap: "{{ proxmox_swap }}"
       storage: "{{ proxmox_storage }}"
       ostemplate: "{{ proxmox_base_image }}"
-      mounts: '{"mp0":"/mnt/lxc_shares/nas_rwx/,mp=/mnt/nas"}'
       netif: '{"net0":"name=eth0,ip=dhcp,bridge=vmbr0,firewall=0,tag=10"}'
       features: "{{ proxmox_features }}"
   - name: start a normal container
