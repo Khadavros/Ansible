@@ -33,4 +33,5 @@
       api_token_id: "{{ proxmox_api_token_id }}"
       api_token_secret: "{{ proxmox_api_token_secret }}"
       hostname: "{{ proxmox_hostname }}"
+      vmid: "{{ proxmox_vmid }}"
       state: started
