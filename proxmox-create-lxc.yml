@@ -8,7 +8,7 @@
       api_token_id: "{{ proxmox_api_token_id }}"
       api_token_secret: "{{ proxmox_api_token_secret }}"
       state: started
-      vmid: 
+      hostname: "{{ proxmox_hostname }}"
       cpus: "{{ proxmox_cpus }}"
       cores: "{{ proxmox_cores }}"
       memory: "{{ proxmox_memory }}"
