@@ -2,8 +2,12 @@
 - hosts: Test
   vars_prompt:
     - name: proxmox_hostname
-      prompt: Specify hostname for container
+      prompt: "Specify hostname for container, separate by commas"
       private: false
+      
+  tasks: 
+    - set_fact: 
+        proxmox_hostname: "{{ proxmox_hostname.split(',') }}"
       
   tasks:
   - name: create a normal container
@@ -14,9 +18,9 @@
       api_token_secret: "{{ proxmox_api_token_secret }}"
       node: "{{ proxmox_node }}"
       unprivileged: true
+      hostname: "{{ proxmox_hostname }}"
       password: "{{ proxmox_lxc_password }}"
       state: present
-      hostname: "{{ proxmox_hostname }}"
       vmid:
       cpus: "{{ proxmox_cpus }}"
       cores: "{{ proxmox_cores }}"
@@ -26,6 +30,7 @@
       ostemplate: "{{ proxmox_base_image }}"
       netif: '{"net0":"name=eth0,ip=dhcp,bridge=vmbr0,firewall=0,tag=10"}'
       features: "{{ proxmox_features }}"
+    loop: "{{ proxmox_hostname }}"
       
   - name: Sleep for 15 seconds and continue with play
     ansible.builtin.wait_for:
