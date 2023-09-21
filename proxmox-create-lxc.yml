@@ -14,7 +14,7 @@
       api_token_secret: "{{ proxmox_api_token_secret }}"
       node: "{{ proxmox_node }}"
       unprivileged: true
-      hostname: "{{ proxmox_hostname.split(",") }}"
+      hostname: "{{ proxmox_hostname.split(',') }}"
       password: "{{ proxmox_lxc_password }}"
       state: present
       vmid:
