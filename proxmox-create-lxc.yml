@@ -6,14 +6,6 @@
       private: false
       
   tasks:
-  - name: 
-    set_fact:
-      proxmox_hostname: "{{ proxmox_hostname.split(',') }}"
-
-  - debug:
-      msg: "{{ item }}"
-    loop: "{{ proxmox_hostname | list }}"
-  
   - name: create a normal container
     community.general.proxmox:
       api_user: "{{ proxmox_api_user }}"
@@ -22,7 +14,7 @@
       api_token_secret: "{{ proxmox_api_token_secret }}"
       node: "{{ proxmox_node }}"
       unprivileged: true
-      hostname: "{{ proxmox_hostname }}"
+      hostname: "{{ proxmox_hostname.split(",") }}"
       password: "{{ proxmox_lxc_password }}"
       state: present
       vmid:
@@ -34,6 +26,7 @@
       ostemplate: "{{ proxmox_base_image }}"
       netif: '{"net0":"name=eth0,ip=dhcp,bridge=vmbr0,firewall=0,tag=10"}'
       features: "{{ proxmox_features }}"
+    loop: "{{ proxmox_hostname }}"
       
   - name: Sleep for 15 seconds and continue with play
     ansible.builtin.wait_for:
