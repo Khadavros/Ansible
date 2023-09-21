@@ -35,11 +35,13 @@
       timeout: 15
     
   - name: start a normal container
+    vars: 
+    loop: "{{ proxmox_hostname.split(',') }}"
     community.general.proxmox:
       api_user: "{{ proxmox_api_user }}"
       api_host: "{{ proxmox_api_host }}"
       api_token_id: "{{ proxmox_api_token_id }}"
       api_token_secret: "{{ proxmox_api_token_secret }}"
       hostname: "{{ proxmox_hostname }}"
-      vmid: "{{ proxmox_vmid }}"
+      vmid: "{{ item }}"
       state: started
