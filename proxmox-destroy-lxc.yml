@@ -1,9 +1,5 @@
 ---
 - hosts: Test
-  vars_prompt:
-    - name: proxmox_vmid
-      prompt: "Specify vmids for containers, separate by commas"
-      private: false
       
   tasks: 
   - name: Remove container
