@@ -9,6 +9,10 @@
   - name: 
     set_fact:
       proxmox_hostname: "{{ proxmox_hostname.split(',') }}"
+
+  - debug:
+      msg: "{{item}}"
+    loop: "{{proxmox_hostname}}"
   
   - name: create a normal container
     community.general.proxmox:
@@ -30,10 +34,6 @@
       ostemplate: "{{ proxmox_base_image }}"
       netif: '{"net0":"name=eth0,ip=dhcp,bridge=vmbr0,firewall=0,tag=10"}'
       features: "{{ proxmox_features }}"
-
-  - debug:
-      msg: "{{item}}"
-    loop: "{{proxmox_hostname}}"
       
   - name: Sleep for 15 seconds and continue with play
     ansible.builtin.wait_for:
