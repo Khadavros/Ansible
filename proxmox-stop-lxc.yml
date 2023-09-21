@@ -7,8 +7,6 @@
       
   tasks: 
   - name: Stop container
-    vars: 
-    loop: "{{ proxmox_vmid.split(',') }}"
     community.general.proxmox:
       vmid: "{{ proxmox_vmid }}"
       api_user: "{{ proxmox_api_user }}"
