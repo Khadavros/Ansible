@@ -17,7 +17,7 @@
       password: "{{ proxmox_lxc_password }}"
       state: present
       hostname: "{{ proxmox_hostname }}"
-      vmid: "{{ proxmox_vmid }}"
+      vmid:
       cpus: "{{ proxmox_cpus }}"
       cores: "{{ proxmox_cores }}"
       memory: "{{ proxmox_memory }}"
