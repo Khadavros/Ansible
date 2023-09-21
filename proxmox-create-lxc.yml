@@ -2,7 +2,7 @@
 - hosts: Test
   vars_prompt:
     - name: proxmox_hostname
-      prompt: Specify hostname for container: 
+      prompt: Specify hostname for container
       private: false
       
   tasks:
