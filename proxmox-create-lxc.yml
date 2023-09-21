@@ -7,6 +7,8 @@
       
   tasks:
   - name: create a normal container
+    vars: 
+    loop: "{{ proxmox_hostname.split(',') }}"
     community.general.proxmox:
       api_user: "{{ proxmox_api_user }}"
       api_host: "{{ proxmox_api_host }}"
@@ -14,8 +16,6 @@
       api_token_secret: "{{ proxmox_api_token_secret }}"
       node: "{{ proxmox_node }}"
       unprivileged: true
-      vars: 
-      loop: "{{ proxmox_hostname.split(',') }}"
       hostname: "{{ proxmox_hostname }}"
       password: "{{ proxmox_lxc_password }}"
       state: present
