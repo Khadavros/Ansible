@@ -1,7 +1,14 @@
 ---
 - hosts: Test
+  vars_prompt:
+    - name: proxmox_vmid
+      prompt: "Specify vmids for containers, separate by commas"
+      private: false
+      
   tasks: 
   - name: Remove container
+    vars: 
+    loop: "{{ proxmox_vmid.split(',') }}"
     community.general.proxmox:
       vmid: "{{ proxmox_vmid }}"
       api_user: "{{ proxmox_api_user }}"
