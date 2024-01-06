@@ -3,17 +3,15 @@ forceEnabling = false
 
 mods = -- Mods installed server-side
 {
-    {workshopid = "1691539727"}, -- Workshop Mods
-    {workshopid = "1691591293"},
-    {path = prefix .. "mymod"}, -- Non-workshop mods. prefix should be replaced with the directory containing the mods
-    {path = prefix .. "AnotherMod"}
-    -- Note there is no comma on the last set of {}
+    {workshopid = "1751636748"}, -- Workshop Mods
+    {workshopid = "1769379152"},
+    {workshopid = "1722652757"},
+    {workshopid = "1765619430"}
 }
 allowed = -- List of allowed client-side mods
 {
-    {workshopid = "1691539727"}, -- Workshop Mods
-    {workshopid = "1691591293"},
-    {path = prefix .. "mymod"}, -- Non-workshop mods. prefix should be replaced with the directory containing the mods
-    {path = prefix .. "AnotherMod"}
-    -- Note there is no comma on the last set of {}
+    {workshopid = "1751636748"}, -- Workshop Mods
+    {workshopid = "1769379152"},
+    {workshopid = "1722652757"},
+    {workshopid = "1765619430"}
 }
